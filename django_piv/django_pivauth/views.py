@@ -1,7 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import ListView
+
+from .models import PivUser
 
 # Create your views here.
-class PivUserInfo(View):
+class PivUserListView(ListView):
+    """
+    PivUserListView List currently configure PivUsers
+    """
 
-    pass
+    model = PivUser
+    context_object_name = "piv_users"

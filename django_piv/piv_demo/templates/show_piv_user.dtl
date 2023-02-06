@@ -1,0 +1,8 @@
+<h1>META:</h1>
+{% for key, value in meta.items %}
+    {{ key }}: {{ value }}<br>
+{% endfor %}
+<h1>headers:</h1>
+{% for key, value in headers.items %}
+    {{ key }}: {{ value }}<br>
+{% endfor %}

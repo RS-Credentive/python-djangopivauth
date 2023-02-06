@@ -1,0 +1,20 @@
+    server {
+        listen 8443 ssl;
+        #server_name myapp.example.com;
+        #root /var/www/myapp/html;
+        ssl_certificate_key /etc/nginx/privkey.pem;
+        ssl_certificate /etc/nginx/server_cert_chain.pem;
+	ssl_verify_client on;
+	ssl_client_certificate /etc/nginx/common_root.pem;
+	ssl_verify_depth 2;
+
+        location / {
+            include /etc/nginx/uwsgi_params;
+            uwsgi_pass django;
+            uwsgi_param Host $host;
+            uwsgi_param X-Real-IP $remote_addr;
+            uwsgi_param X-Forwarded-For $proxy_add_x_forwarded_for;
+            uwsgi_param X-Forwarded-Proto $http_x_forwarded_proto;
+	    uwsgi_param Certificate $ssl_client_cert;
+        }
+    }

@@ -1,0 +1,4 @@
+nginx_config/privkey.pem
+nginx_config/privkey.encrypted.pem
+nginx_config/server_cert_chain.pem
+*.pyc
